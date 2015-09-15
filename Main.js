@@ -109,7 +109,7 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 	stroke(txtcolor);
 	strokeWeight(4);
 	rectMode(CENTER);
-	rect(x,y,w,h,10);
+	rect(x,y,w,h,6);
 	textAlign(CENTER,CENTER);
 	if (waiting === false) {
 		fill(20,110,20);
@@ -122,7 +122,7 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 		stroke(0,0,0);
 		strokeWeight(5);
 		noFill();
-		rect(x,y,w,h,10);
+		rect(x,y,w,h,6);
 		if (m === true) {
 			if (waiting === false) {
 				f = true;
