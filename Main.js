@@ -236,7 +236,7 @@ void scene0() {
 	menuAlpha += 4;
 };
 void scene1() {
-	fill(0,0,0,90);
+	fill(0,0,0,100);
 	rect(-1,-1,width+2,height+2);
 	playmssgs();
 	covermssgs();
@@ -260,9 +260,10 @@ void scene1() {
 	mainroom();
 };
 void scene2() {
-	background(0,0,0,80);
+	background(0,0,0,60);
 	textFont(mainfont,60);
 	fill(txtcolor);
+	textAlign(CENTER,CENTER);
 	text("You are dead.",width/2,height/2);
 };
 
