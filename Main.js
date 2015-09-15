@@ -8,7 +8,6 @@ background(0,0,0);
 
 var keys = [];
 
-
 //Constants
 var mainfont = createFont("Times New Roman");
 var mssgfont = createFont("monospace");
@@ -43,6 +42,7 @@ var minutes = 0;
 var bodytemp = 98;
 var objects = [];
 var inventory = [];
+var searched = false;
 
 //Functions
 void playmssgs() {
@@ -88,7 +88,9 @@ void eyes(x,y,fade) {
 	ellipse(x+10,y,10,10);
 };
 void mainroom() {
-	objects = ["crowbar","lighter"];
+	if (searched === false) {
+		objects = ["crowbar","lighter"];
+	}
 };
 void button(x,y,w,h,t,s,object,value,btnlength) {
 	noFill();
@@ -130,6 +132,7 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 						mssgs.push("You found a "+objects[o]);
 					}
 					objects = [];
+					searched = true;
 				}
 				waiting = true;
 			}
