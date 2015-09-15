@@ -41,6 +41,8 @@ var day = 0;
 var hours = 0;
 var minutes = 0;
 var bodytemp = 98;
+var objects = [];
+var inventory = [];
 
 //Functions
 void playmssgs() {
@@ -86,7 +88,7 @@ void eyes(x,y,fade) {
 	ellipse(x+10,y,10,10);
 };
 void mainroom() {
-
+	objects = ["crowbar","lighter"];
 };
 void button(x,y,w,h,t,s,object,value,btnlength) {
 	noFill();
@@ -123,7 +125,9 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 				}
 				if (object === "itemcheck") {
 					mssgs.push("You search the room.");
-					
+					for (var o = 0; o < objects.length; o ++) {
+						inventory.push(objects[o]);
+					}
 				}
 				waiting = true;
 			}
@@ -159,11 +163,20 @@ void temptostring(temp) {
 		tempstatus = "burning hot!";
 	}
 };
-var times() {
+void times() {
 	minutes = time-(hours*60);
 	hours = floor(time/60);
 	day = floor(hours*24);
 };
+void inventorydisplay() {
+	for (var o2 = 0; o2 < inventory.length; o2 ++) {
+		textAlign(LEFT,TOP);
+		fill(txtcolor);
+		textFont(mainfont,15);
+		text(inventory[o2],width-100,(o2*20)+height/2)
+	}
+}
+
 
 // Setup!
 void setup() {
@@ -217,6 +230,7 @@ void scene1() {
 	fade();
 	temptostring(temp);
 	times();
+	mainroom();
 };
 
 
