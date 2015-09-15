@@ -15,17 +15,11 @@ var mssgfont = createFont("monospace");
 var txtcolor = color(90,90,90);
 var scene = 0;
 var Width = 800;
-
 var Height = 600
-
 var Framerate = 30;
-
 var W = 87;
-
 var A = 65;
-
 var S = 83;
-
 var D = 68;
 
 var menuAlpha = 0;
@@ -49,7 +43,6 @@ var minutes = 0;
 var bodytemp = 98;
 
 //Functions
-
 void playmssgs() {
 	fill(txtcolor);
 	textFont(mssgfont, 17);
@@ -65,22 +58,17 @@ void covermssgs() {
 		line(0,c,width,c);
 	}
 };
-void keyPressed() 
-{
+
+void keyPressed() {
 
 	keys[keyCode] = true;
 
 };
-
-
-void keyReleased() 
-{
+void keyReleased() {
 
 	keys[keyCode] = false;
 
 };
-
-
 
 void mousePressed() {
 	if (scene===0) {scene = 1;}
@@ -177,14 +165,8 @@ var times() {
 	day = floor(hours*24);
 };
 
-
 // Setup!
-
-
-
-
-void setup()
-{
+void setup() {
 	size(Width, Height);
 
 	frameRate(Framerate);
@@ -201,7 +183,6 @@ void fade() {
 		}
 	}
 };
-
 
 // Scenes
 void scene0() {
