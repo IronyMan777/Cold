@@ -51,7 +51,7 @@ var searched = false;
 //Functions
 void playmssgs() {
 	fill(txtcolor);
-	textFont(mssgfont, 17);
+	textFont(mssgfont, 16);
 	textAlign(CENTER,CENTER);
 	for (var ms = mssgs.length; ms > -1; ms --) {
 		text(mssgs[ms],width/2,(-ms*20)+20*mssgs.length+70);
@@ -97,11 +97,17 @@ void mainroom() {
 	}
 	location = "House - Ground floor";
 };
+void upstairs() {
+	if (searched === false) {
+		objects = ["sandwich","box of nails"];
+	}
+	location = "House - Upstairs";
+};
 void outfront() {
 	if (searched === false) {
 		objects = [sticks,jacket];
 	}
-}
+};
 void button(x,y,w,h,t,s,object,value,btnlength) {
 	noFill();
 	stroke(txtcolor);
@@ -129,6 +135,9 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 				if (location === "House - Ground floor") {
 					temp -= 1;
 				}
+				if (object === "move") {
+					scene = value;
+				}
 				if (object === "time") {
 					mssgs.push("You wait.");
 					if (temp < 40) {
@@ -146,12 +155,12 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 						mssgs.push("Your limbs have gone numb.");
 						if (health < 0) {
 							health = 0;
-							scene = 2;
+							scene = -1;
 						}
 					}
 				}
 				if (object === "itemcheck") {
-					mssgs.push("You search the room.");
+					mssgs.push("You search the area thoroughly.");
 					for (var o = 0; o < objects.length; o ++) {
 						if (inventory.length < storage) {
 							inventory.push(objects[o]);
@@ -259,6 +268,7 @@ void scene1() {
 	// Buttons!
 	button(100,100,100,30,"Wait",15,"time",5,20);
 	button(100,145,100,30,"Search the area",12,"itemcheck",20,200);
+	button(100,190,100,30,"Go upstairs",14,"move",2,2)
 
 	textAlign(CENTER,CENTER);
 	fill(txtcolor);
@@ -275,6 +285,31 @@ void scene1() {
 	mainroom();
 };
 void scene2() {
+	fill(0,0,0,100);
+	rect(-1,-1,width+2,height+2);
+	playmssgs();
+	covermssgs();
+	
+	// Buttons!
+	button(100,100,100,30,"Wait",15,"time",5,20);
+	button(100,145,100,30,"Search the area",12,"itemcheck",20,200);
+	
+	textAlign(CENTER,CENTER);
+	fill(txtcolor);
+	textSize(30);
+	text(location,width/2,40);
+	
+	inventorydisplay();
+
+	cursor("NONE");
+	moose();
+	fade();
+	temptostring(temp);
+	times();
+};
+
+
+void deadscene() {
 	background(0,0,0,60);
 	textFont(mainfont,60);
 	fill(txtcolor);
@@ -286,6 +321,9 @@ void draw()
 {
 
 noStroke();
+if (scene === -1) {
+	deadscene();
+}
 if (scene === 0) {	
 	scene0();
 }
