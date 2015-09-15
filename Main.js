@@ -137,6 +137,7 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 				}
 				if (object === "move") {
 					scene = value;
+					time += 2;
 				}
 				if (object === "time") {
 					mssgs.push("You wait.");
@@ -268,7 +269,7 @@ void scene1() {
 	// Buttons!
 	button(100,100,100,30,"Wait",15,"time",5,20);
 	button(100,145,100,30,"Search the area",12,"itemcheck",20,200);
-	button(100,190,100,30,"Go upstairs",14,"move",2,2)
+	button(100,190,100,30,"Go upstairs",14,"move",2,100)
 
 	textAlign(CENTER,CENTER);
 	fill(txtcolor);
@@ -293,7 +294,7 @@ void scene2() {
 	// Buttons!
 	button(100,100,100,30,"Wait",15,"time",5,20);
 	button(100,145,100,30,"Search the area",12,"itemcheck",20,200);
-	button(100,190,100,30,"Go downstairs",14,"move",1,2)
+	button(100,190,100,30,"Go downstairs",14,"move",1,100)
 	
 	textAlign(CENTER,CENTER);
 	fill(txtcolor);
