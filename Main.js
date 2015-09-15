@@ -129,10 +129,13 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 					mssgs.push("You search the room.");
 					for (var o = 0; o < objects.length; o ++) {
 						inventory.push(objects[o]);
-						mssgs.push("You found a "+objects[o]);
+						mssgs.push("You pick up a "+objects[o]);
 					}
 					objects = [];
 					searched = true;
+					if (objects.length === 0) {
+						mssgs.push("You found nothing.")
+					}
 				}
 				waiting = true;
 			}
