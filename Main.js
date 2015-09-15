@@ -223,7 +223,8 @@ void scene1() {
 	fill(txtcolor);
 	textSize(30);
 	text(location,width/2,40);
-
+	
+	inventorydisplay();
 
 	cursor("NONE");
 	moose();
