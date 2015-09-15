@@ -142,7 +142,8 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 					}
 					if (temp < 0) {
 						health -= 5;
-						mssgs.push("Your limbs have gone numb.\nYou should try to warm up.");
+						mssgs.push("You should try to warm up.");
+						mssgs.push("Your limbs have gone numb.");
 						if (health < 0) {
 							health = 0;
 							scene = 2;
@@ -156,7 +157,8 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 							inventory.push(objects[o]);
 							mssgs.push("You pick up the "+objects[o]+".");
 						} else {
-							mssgs.push("There is an object here,\nbut you have no more space.")
+							mssgs.push("There is an object here,");
+							mssgs.push("but you have no more space.");
 						}
 					}
 					objects = [];
