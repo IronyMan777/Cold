@@ -25,13 +25,16 @@ var menuAlpha = 0;
 var houseSize = 1;
 var mssgs = [];
 int coldtimer;
-var temp = 50;
+var temp = 40;
 string tempstatus;
 string status;
 string message;
+var hunger = 0;
+var health = 100;
 var time = 0;
 var f = false;
 var f2 = 200;
+var r;
 var m;
 var waiting = false;
 var waitcheck = 0;
@@ -124,6 +127,18 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 					} else if (temp > 70) {
 						mssgs.push("It is "+tempstatus);
 					}
+					if (temp < 20) {
+						mssgs.push("Your hands are starting to tingle from the cold.")
+						health -= 1;
+					}
+					if (temp < 0) {
+						health -= 5;
+						mssgs.push("Your limbs have gone numb. You should try to warm up.")
+						if (health < 0) {
+							health = 0;
+							scene = 2;
+						}
+					}
 				}
 				if (object === "itemcheck") {
 					mssgs.push("You search the room.");
@@ -192,17 +207,20 @@ void setup() {
 
 	frameRate(Framerate);
 };
-
 void fade() {
 	if (f === true) {
-	fill(0,0,0,f2);
-	rect(0,0,width*2,height*2);
+	fill(r,0,0,f2);
+	rect(-1,-1,width*2+1,height*2+1);
 	f2 -= 3;
 		if (f2 < 0) {
 			f = false;
 			f2 = 200;
 		}
+		if (health < 20) {
+			r = 200;
+		}
 	}
+	r -= 3;
 };
 
 // Scenes
@@ -241,7 +259,12 @@ void scene1() {
 	times();
 	mainroom();
 };
-
+void scene2() {
+	background(0,0,0,80);
+	textFont(mainfont,60);
+	fill(txtcolor);
+	text("You are dead.",width/2,height/2);
+};
 
 void draw()
 {
@@ -252,5 +275,8 @@ if (scene === 0) {
 }
 if (scene === 1) {
 	scene1();
+}
+if (scene === 2) {
+	scene2();
 }
 };
