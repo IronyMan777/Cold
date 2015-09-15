@@ -128,12 +128,12 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 						mssgs.push("It is "+tempstatus);
 					}
 					if (temp < 20) {
-						mssgs.push("Your hands are starting to tingle from the cold.")
+						mssgs.push("Your hands are starting to tingle from the cold.");
 						health -= 1;
 					}
 					if (temp < 0) {
 						health -= 5;
-						mssgs.push("Your limbs have gone numb. You should try to warm up.")
+						mssgs.push("Your limbs have gone numb. You should try to warm up.");
 						if (health < 0) {
 							health = 0;
 							scene = 2;
