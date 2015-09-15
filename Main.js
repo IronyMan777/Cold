@@ -45,6 +45,7 @@ var minutes = 0;
 var bodytemp = 98;
 var objects = [];
 var inventory = [];
+var storage = 2;
 var searched = false;
 
 //Functions
@@ -94,7 +95,13 @@ void mainroom() {
 	if (searched === false) {
 		objects = ["crowbar","lighter"];
 	}
+	location = "House";
 };
+void outfront() {
+	if (searched === false) {
+		objects = [sticks,jacket];
+	}
+}
 void button(x,y,w,h,t,s,object,value,btnlength) {
 	noFill();
 	stroke(txtcolor);
@@ -133,7 +140,7 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 					}
 					if (temp < 0) {
 						health -= 5;
-						mssgs.push("Your limbs have gone numb. You should try to warm up.");
+						mssgs.push("Your limbs have gone numb.\nYou should try to warm up.");
 						if (health < 0) {
 							health = 0;
 							scene = 2;
@@ -143,8 +150,12 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 				if (object === "itemcheck") {
 					mssgs.push("You search the room.");
 					for (var o = 0; o < objects.length; o ++) {
-						inventory.push(objects[o]);
-						mssgs.push("You pick up a "+objects[o]);
+						if (inventory.length < storage) {
+							inventory.push(objects[o]);
+							mssgs.push("You pick up the "+objects[o]+".");
+						} else {
+							mssgs.push("There is an object here,\nbut you have no more space.")
+						}
 					}
 					objects = [];
 					searched = true;
