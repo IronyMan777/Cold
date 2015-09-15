@@ -60,14 +60,10 @@ void covermssgs() {
 };
 
 void keyPressed() {
-
 	keys[keyCode] = true;
-
 };
 void keyReleased() {
-
 	keys[keyCode] = false;
-
 };
 
 void mousePressed() {
@@ -124,6 +120,10 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 					} else if (temp > 70) {
 						mssgs.push("It is "+tempstatus);
 					}
+				}
+				if (object === "itemcheck") {
+					mssgs.push("You search the room.");
+					
 				}
 				waiting = true;
 			}
@@ -203,8 +203,8 @@ void scene1() {
 	covermssgs();
 
 	// Buttons!
-	button(100,100,100,30,"Wait",15,"time",5,50);
-	button(100,145,100,30,"Look around",13,"itemcheck",15,150);
+	button(100,100,100,30,"Wait",15,"time",5,20);
+	button(100,145,100,30,"Look around",13,"itemcheck",20,200);
 
 	textAlign(CENTER,CENTER);
 	fill(txtcolor);
