@@ -38,7 +38,7 @@ var r;
 var m;
 var waiting = false;
 var waitcheck = 0;
-var location = "House";
+var location = "House - Ground floor";
 var day = 0;
 var hours = 0;
 var minutes = 0;
@@ -95,7 +95,7 @@ void mainroom() {
 	if (searched === false) {
 		objects = ["crowbar","lighter"];
 	}
-	location = "House";
+	location = "House - Ground floor";
 };
 void outfront() {
 	if (searched === false) {
@@ -126,7 +126,9 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 				f = true;
 				f2 = 200;
 				time += value;
-				temp -= 1;
+				if (location === "House - Ground floor") {
+					temp -= 1;
+				}
 				if (object === "time") {
 					mssgs.push("You wait.");
 					if (temp < 40) {
@@ -158,10 +160,10 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 						}
 					}
 					objects = [];
-					searched = true;
-					if (objects.length === 0) {
+					if (searched === true) {
 						mssgs.push("You found nothing.")
 					}
+					searched = true;
 				}
 				waiting = true;
 			}
@@ -254,7 +256,7 @@ void scene1() {
 
 	// Buttons!
 	button(100,100,100,30,"Wait",15,"time",5,20);
-	button(100,145,100,30,"Look around",13,"itemcheck",20,200);
+	button(100,145,100,30,"Search the area",12,"itemcheck",20,200);
 
 	textAlign(CENTER,CENTER);
 	fill(txtcolor);
