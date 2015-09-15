@@ -306,6 +306,7 @@ void scene2() {
 	fade();
 	temptostring(temp);
 	times();
+	upstairs();
 };
 
 
