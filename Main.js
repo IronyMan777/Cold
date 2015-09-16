@@ -170,8 +170,8 @@ void button(x,y,w,h,t,s,object,value,btnlength,location) {
 							inventory.push(objects[o]);
 							mssgs.push("You pick up the "+objects[o]+".");
 						} else {
-							mssgs.push("There is an object here,");
 							mssgs.push("but you have no more space.");
+							mssgs.push("There is an object here,");
 						}
 					}
 					objects = [];
