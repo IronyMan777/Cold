@@ -46,7 +46,7 @@ var bodytemp = 98;
 var objects = [];
 var inventory = [];
 var storage = 2;
-var searched = false;
+var searched = [false,false,false];
 
 //Functions
 void playmssgs() {
@@ -92,23 +92,23 @@ void eyes(x,y,fade) {
 	ellipse(x+10,y,10,10);
 };
 void mainroom() {
-	if (searched === false) {
+	if (searched[1] === false) {
 		objects = ["crowbar","lighter"];
 	}
 	location = "House - Ground floor";
 };
 void upstairs() {
-	if (searched === false) {
+	if (searched[2] === false) {
 		objects = ["sandwich","box of nails"];
 	}
 	location = "House - Upstairs";
 };
 void outfront() {
-	if (searched === false) {
+	if (searched[3] === false) {
 		objects = [sticks,jacket];
 	}
 };
-void button(x,y,w,h,t,s,object,value,btnlength) {
+void button(x,y,w,h,t,s,object,value,btnlength,location) {
 	noFill();
 	stroke(txtcolor);
 	strokeWeight(4);
@@ -136,6 +136,9 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 					temp -= 1;
 				}
 				if (object === "move") {
+					if (scene === 1 || scene === 2) {
+						mssgs.push("The stairs creak beneath your feet.");
+					}
 					scene = value;
 					time += 2;
 				}
@@ -172,10 +175,10 @@ void button(x,y,w,h,t,s,object,value,btnlength) {
 						}
 					}
 					objects = [];
-					if (searched === true) {
+					if (searched[location] === true) {
 						mssgs.push("You found nothing.")
 					}
-					searched = true;
+					searched[location] = true;
 				}
 				waiting = true;
 			}
@@ -261,14 +264,13 @@ void scene0() {
 	menuAlpha += 4;
 };
 void scene1() {
-	fill(0,0,0,100);
-	rect(-1,-1,width+2,height+2);
+	background(0,0,0);
 	playmssgs();
 	covermssgs();
 
 	// Buttons!
 	button(100,100,100,30,"Wait",15,"time",5,20);
-	button(100,145,100,30,"Search the area",12,"itemcheck",20,200);
+	button(100,145,100,30,"Search the area",12,"itemcheck",20,200,1);
 	button(100,190,100,30,"Go upstairs",14,"move",2,100)
 
 	textAlign(CENTER,CENTER);
@@ -286,14 +288,13 @@ void scene1() {
 	mainroom();
 };
 void scene2() {
-	fill(0,0,0,100);
-	rect(-1,-1,width+2,height+2);
+	background(0,0,0);
 	playmssgs();
 	covermssgs();
 	
 	// Buttons!
 	button(100,100,100,30,"Wait",15,"time",5,20);
-	button(100,145,100,30,"Search the area",12,"itemcheck",20,200);
+	button(100,145,100,30,"Search the area",12,"itemcheck",20,200,2);
 	button(100,190,100,30,"Go downstairs",14,"move",1,100)
 	
 	textAlign(CENTER,CENTER);
