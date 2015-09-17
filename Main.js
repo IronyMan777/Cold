@@ -132,6 +132,7 @@ void button(x,y,w,h,t,s,object,value,btnlength,location) {
 				f = true;
 				f2 = 200;
 				time += value;
+				hunger += value/2;
 				if (location === "House - Ground floor") {
 					temp -= 1;
 				}
@@ -140,7 +141,6 @@ void button(x,y,w,h,t,s,object,value,btnlength,location) {
 						mssgs.push("The stairs creak beneath your feet.");
 					}
 					scene = value;
-					time += 2;
 				}
 				if (object === "time") {
 					mssgs.push("You wait.");
