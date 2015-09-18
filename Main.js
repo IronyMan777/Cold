@@ -133,9 +133,7 @@ void button(x,y,w,h,t,s,object,value,btnlength,location) {
 				f2 = 200;
 				time += value;
 				hunger += value/2;
-				if (location === "House - Ground floor") {
-					temp -= 1;
-				}
+				temp -= value;
 				if (object === "move") {
 					if (scene === 1 || scene === 2) {
 						mssgs.push("The stairs creak beneath your feet.");
@@ -179,6 +177,7 @@ void button(x,y,w,h,t,s,object,value,btnlength,location) {
 						mssgs.push("You found nothing.")
 					}
 					searched[location] = true;
+					
 				}
 				waiting = true;
 			}
