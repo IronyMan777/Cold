@@ -142,24 +142,7 @@ void button(x,y,w,h,t,s,object,value,btnlength,location) {
 				}
 				if (object === "time") {
 					mssgs.push("You wait.");
-					if (temp < 40) {
-						mssgs.push("It is "+tempstatus);
-					} else if (temp > 70) {
-						mssgs.push("It is "+tempstatus);
-					}
-					if (temp < 20) {
-						mssgs.push("Your hands are starting to tingle from the cold.");
-						health -= 1;
-					}
-					if (temp < 0) {
-						health -= 5;
-						mssgs.push("You should try to warm up.");
-						mssgs.push("Your limbs have gone numb.");
-						if (health < 0) {
-							health = 0;
-							scene = -1;
-						}
-					}
+					tempdisplay();
 				}
 				if (object === "itemcheck") {
 					mssgs.push("You search the area thoroughly.");
@@ -177,7 +160,7 @@ void button(x,y,w,h,t,s,object,value,btnlength,location) {
 						mssgs.push("You found nothing.")
 					}
 					searched[location] = true;
-					
+					tempdisplay();
 				}
 				waiting = true;
 			}
@@ -211,6 +194,26 @@ void temptostring(temp) {
 		tempstatus = "very hot!";
 	} else if (temp > 90) {
 		tempstatus = "burning hot!";
+	}
+};
+void tempdisplay() {
+	if (temp < 30) {
+		mssgs.push("It is "+tempstatus);
+	} else if (temp > 70) {
+		mssgs.push("It is "+tempstatus);
+	}
+	if (temp < 20) {
+		mssgs.push("Your hands are starting to tingle from the cold.");
+		health -= 1;
+	}
+	if (temp < 0) {
+		health -= 5;
+		mssgs.push("You should try to warm up.");
+		mssgs.push("Your limbs have gone numb.");
+		if (health < 0) {
+			health = 0;
+			scene = -1;
+		}
 	}
 };
 void times() {
